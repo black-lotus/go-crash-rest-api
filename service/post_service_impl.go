@@ -14,7 +14,7 @@ var (
 	postRepository repository.PostRepository
 )
 
-func NewPostServiceImpl(repository repository.PostRepository) *PostServiceImpl {
+func NewPostServiceImpl(repository repository.PostRepository) PostService {
 	postRepository = repository
 	return &PostServiceImpl{}
 }
@@ -68,7 +68,7 @@ func (*PostServiceImpl) FindAll() ([]rest_model.PostDTO, *rest_model.ServiceErro
 		return nil, serviceError
 	}
 
-	var postsDTO []rest_model.PostDTO = make([]rest_model.PostDTO, 0, len(posts))
+	postsDTO := make([]rest_model.PostDTO, 0, len(posts))
 	for _, post := range posts {
 		postsDTO = append(postsDTO, *castingToPostDTO(&post))
 	}

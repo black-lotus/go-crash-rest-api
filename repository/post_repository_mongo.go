@@ -60,7 +60,7 @@ func (*repo) FindByID(id string) (*entity.Post, error) {
 func (*repo) FindAll() ([]entity.Post, error) {
 	var posts []entity.Post
 
-	err := database.C(collection).Find(bson.M{}).All(posts)
+	err := database.C(collection).Find(bson.M{}).All(&posts)
 
 	if err != nil {
 		return nil, err

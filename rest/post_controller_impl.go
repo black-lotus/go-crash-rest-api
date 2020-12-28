@@ -11,7 +11,7 @@ import (
 )
 
 type PostControllerImpl struct {
-	postService *service.PostServiceImpl
+	postService service.PostService
 }
 
 func NewPostControllerImpl(database *mgo.Database) *PostControllerImpl {
